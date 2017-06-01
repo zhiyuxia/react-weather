@@ -11,7 +11,7 @@ module.exports = function (env) {
     entry: {
       main: path.resolve(__dirname, '..', 'app', 'entryPoints', 'main'),
       tweets: path.resolve(__dirname, '..', 'app', 'entryPoints', 'tweets'),
-      vendor: ['jquery', 'bootstrap', 'react', 'react-dom', 'angular'],
+      vendor: ['bootstrap', 'react', 'react-dom', 'angular'],
     },
     output: {
       path: path.join(__dirname, '..', 'build-prod'),
@@ -73,56 +73,44 @@ module.exports = function (env) {
         filename: 'vendor.[chunkhash].bundle.js',
         chunks: ['vendor'],
       }),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-      }),
       new htmlWebpackPlugin({
-        template: path.resolve(__dirname, '..', 'app', 'entryPoints', 'main', 'index.html'),
+        template: path.resolve(__dirname, '..', 'app', 'index.html'),
         hash: true,
         chunks: ['vendor', 'main'],
         minify: {
           collapseWhitespace: true,
         },
       }),
-      new htmlWebpackPlugin({
-        template: path.resolve(__dirname, '..', 'app', 'entryPoints', 'tweets', 'tweets.html'),
-        hash: true,
-        chunks: ['vendor', 'tweets'],
-        filename: 'tweets.html',
-        minify: {
-          collapseWhitespace: true,
-        },
       }),
-      new cleanWebpackPlugin(['build-prod'], {
-        root: path.resolve(__dirname, '..'),
-        verbose: true,
-      }),
-      // 压缩css文件设置
-      new optimizeCssAssetsWebpackPlugin({
-        cssProcessorOptions: { discardComments: { removeAll: true } },
-      }),
-      // 压缩js文件设置
-      new webpack.optimize.UglifyJsPlugin({
-        output: {
-          comments: false,
-        },
-        // 变量名字不修改
-        mangle: false,
-        // 和debuge有关,因为损耗性能,所以默认是关的
-        sourceMap: true,
-      }),
-      // 和生产环境的react有关;
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(env),
-        env: JSON.stringify(env),
-      }),
+  new cleanWebpackPlugin(['build-prod'], {
+    root: path.resolve(__dirname, '..'),
+    verbose: true,
+  }),
+    // 压缩css文件设置
+    new optimizeCssAssetsWebpackPlugin({
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+    }),
+    // 压缩js文件设置
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false,
+      },
+      // 变量名字不修改
+      mangle: false,
+      // 和debuge有关,因为损耗性能,所以默认是关的
+      sourceMap: true,
+    }),
+    // 和生产环境的react有关;
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env),
+      env: JSON.stringify(env),
+    }),
     ],
-    devServer: {
-      contentBase: path.resolve(__dirname, '..', 'build-prod'),
+  devServer: {
+    contentBase: path.resolve(__dirname, '..', 'build-prod'),
       inline: true,
-      port: 3000,
+        port: 3000,
     },
-    devtool: 'source-map',
+  devtool: 'source-map',
   };
 };

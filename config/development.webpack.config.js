@@ -74,6 +74,10 @@ module.exports = function (env) {
         hash: true,
         chunks: ['vendor', 'main'],
       }),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+      }),
       new cleanWebpackPlugin(['build-dev'], {
         root: path.resolve(__dirname, '..'),
         verbose: true,
