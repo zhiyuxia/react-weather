@@ -1,0 +1,28 @@
+.input{
+  min-width: 250px;
+}
+.form {
+  width: 400px;
+  margin: 0 auto;
+}
+.formContainer{
+  width: 300px;
+  margin: 0 auto;
+}
+/*.caption{
+ position: relative;
+ left: 20px; 
+}*/
+.table{
+  margin: 20px auto;
+  width: 700px;
+  text-align: center;
+  border-collapse: collapse;
+}
+.container{
+  margin: 0 auto;
+  width: 800px;
+}
+tr:hover{
+  background: RGBA(248, 246, 248, 1.00);
+}
