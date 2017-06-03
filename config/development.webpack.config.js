@@ -51,17 +51,6 @@ module.exports = function (env) {
         },
       ],
     },
-    resolve: {
-      extensions: ['.js', '.coffee', '.ts', '.css', '.scss', '.json'],
-      alias: {
-        sectionThreeSolution$: path.resolve(__dirname, '..', 'app', 'sectionThreeSolution.js'),
-        Api: path.resolve(__dirname, '..', 'app', 'apis'),
-        welcomeUser$: path.resolve(__dirname, '..', 'app', 'welcomeUser.coffee'),
-        typescript: path.resolve(__dirname, '..', 'app', 'ts'),
-        reactApp$: path.resolve(__dirname, '..', 'app', 'react'),
-        appConfig$: path.resolve(__dirname, '..', 'app', 'config', 'appConfig.yaml'),
-      },
-    },
     plugins: [
       new ExtractTextPlugin('[name].css'),
       new webpack.optimize.CommonsChunkPlugin({
