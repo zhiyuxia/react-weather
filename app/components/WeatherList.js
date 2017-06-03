@@ -26,7 +26,6 @@ class WeatherList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {console.log(this.props.getWeatherData)}
           {this.props.getWeatherData.map(this.renderWeather)}
         </tbody>
       </table>
