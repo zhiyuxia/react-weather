@@ -67,10 +67,10 @@ module.exports = function (env) {
         $: 'jquery',
         jQuery: 'jquery',
       }),
-      new cleanWebpackPlugin(['build-dev'], {
-        root: path.resolve(__dirname, '..'),
-        verbose: true,
-      }),
+      // new cleanWebpackPlugin(['build-dev'], {
+      //   root: path.resolve(__dirname, '..'),
+      //   verbose: true,
+      // }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env),
         env: JSON.stringify(env),

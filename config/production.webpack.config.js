@@ -69,10 +69,10 @@ module.exports = function (env) {
           collapseWhitespace: true,
         },
       }),
-      new cleanWebpackPlugin(['build-prod'], {
-        root: path.resolve(__dirname, '..'),
-        verbose: true,
-      }),
+      // new cleanWebpackPlugin(['build-prod'], {
+      //   root: path.resolve(__dirname, '..'),
+      //   verbose: true,
+      // }),
       // 压缩css文件设置
       new optimizeCssAssetsWebpackPlugin({
         cssProcessorOptions: { discardComments: { removeAll: true } },
